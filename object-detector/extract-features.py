@@ -12,16 +12,9 @@ from config import *
 if __name__ == "__main__":
     # Argument Parser
     parser = ap.ArgumentParser()
-    parser.add_argument('-p', "--pospath", help="Path to positive images",
-            required=True)
-    parser.add_argument('-n', "--negpath", help="Path to negative images",
-            required=True)
     parser.add_argument('-d', "--descriptor", help="Descriptor to be used -- HOG",
             default="HOG")
     args = vars(parser.parse_args())
-
-    pos_im_path = args["pospath"]
-    neg_im_path = args["negpath"]
 	
     des_type = args["descriptor"]
 
