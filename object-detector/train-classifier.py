@@ -9,13 +9,6 @@ import os
 from config import *
 
 if __name__ == "__main__":
-    # Parse the command line arguments
-    parser = ap.ArgumentParser()
-    parser.add_argument('-c', "--classifier", help="Classifier to be used", default="LIN_SVM")
-    args = vars(parser.parse_args())
-
-    # Classifiers supported
-    clf_type = args['classifier']
 
     fds = []
     labels = []
