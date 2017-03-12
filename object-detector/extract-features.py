@@ -1,10 +1,8 @@
 # Import the functions to calculate feature descriptors
-from skimage.feature import local_binary_pattern
 from skimage.feature import hog
 from skimage.io import imread
 from sklearn.externals import joblib
 # To read file names
-import argparse as ap
 import glob
 import os
 from config import *
