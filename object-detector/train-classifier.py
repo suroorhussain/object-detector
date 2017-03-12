@@ -11,13 +11,8 @@ from config import *
 if __name__ == "__main__":
     # Parse the command line arguments
     parser = ap.ArgumentParser()
-    parser.add_argument('-p', "--posfeat", help="Path to the positive features directory", required=True)
-    parser.add_argument('-n', "--negfeat", help="Path to the negative features directory", required=True)
     parser.add_argument('-c', "--classifier", help="Classifier to be used", default="LIN_SVM")
     args = vars(parser.parse_args())
-
-    pos_feat_path =  args["posfeat"]
-    neg_feat_path = args["negfeat"]
 
     # Classifiers supported
     clf_type = args['classifier']
