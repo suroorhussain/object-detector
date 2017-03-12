@@ -4,6 +4,7 @@ from sklearn.externals import joblib
 import glob
 import os
 from config import *
+from extract_features import create_feature_files
 
 def train_classifier():
     fds = []
@@ -29,4 +30,5 @@ def train_classifier():
     joblib.dump(clf, model_path)
     print "Classifier saved to {}".format(model_path)
 if __name__ == "__main__":
+    create_feature_files()
     train_classifier()
