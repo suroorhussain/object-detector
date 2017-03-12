@@ -9,7 +9,7 @@ import glob
 import os
 from config import *
 
-if __name__ == "__main__":
+def create_feature_files():
     # If feature directories don't exist, create them
     if not os.path.isdir(pos_feat_path):
         os.makedirs(pos_feat_path)
@@ -37,3 +37,6 @@ if __name__ == "__main__":
     print "Negative features saved in {}".format(neg_feat_path)
 
     print "Completed calculating features from training images"
+
+if __name__ == "__main__":
+    create_feature_files()
