@@ -5,8 +5,7 @@ import glob
 import os
 from config import *
 
-if __name__ == "__main__":
-
+def train_classifier():
     fds = []
     labels = []
     # Load the positive features
@@ -21,12 +20,13 @@ if __name__ == "__main__":
         fds.append(fd)
         labels.append(0)
 
-    if clf_type is "LIN_SVM":
-        clf = LinearSVC()
-        print "Training a Linear SVM Classifier"
-        clf.fit(fds, labels)
-        # If feature directories don't exist, create them
-        if not os.path.isdir(os.path.split(model_path)[0]):
-            os.makedirs(os.path.split(model_path)[0])
-        joblib.dump(clf, model_path)
-        print "Classifier saved to {}".format(model_path)
+    clf = LinearSVC()
+    print "Training a Linear SVM Classifier"
+    clf.fit(fds, labels)
+    # If feature directories don't exist, create them
+    if not os.path.isdir(os.path.split(model_path)[0]):
+        os.makedirs(os.path.split(model_path)[0])
+    joblib.dump(clf, model_path)
+    print "Classifier saved to {}".format(model_path)
+if __name__ == "__main__":
+    train_classifier()
