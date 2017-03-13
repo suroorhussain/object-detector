@@ -103,18 +103,13 @@ if __name__ == "__main__":
     # Parse the command line arguments
     parser = ap.ArgumentParser()
     parser.add_argument('-i', "--image", help="Path to the test image", required=True)
-    parser.add_argument('-d','--downscale', help="Downscale ratio", default=1.25,
-            type=int)
-    parser.add_argument('-v', '--visualize', help="Visualize the sliding window",
-            action="store_true")
     args = vars(parser.parse_args())
 
-    # Read the image
     im = imread(args["image"], as_grey=False)
     min_wdw_sz = (100, 40)
     step_size = (10, 10)
-    downscale = args['downscale']
-    visualize_det = args['visualize']
+    downscale = 1.25
+    visualize_det = True
 
     # Load the classifier
     clf = joblib.load(model_path)
