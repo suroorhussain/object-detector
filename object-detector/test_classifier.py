@@ -1,6 +1,6 @@
 # Import the required modules
 from skimage.transform import pyramid_gaussian
-from skimage.io import imread
+from skimage.io import imread, imsave
 from skimage.feature import hog
 from sklearn.externals import joblib
 import cv2
@@ -31,7 +31,7 @@ def sliding_window(image, window_size, step_size):
 
 def detect(image, visualize_det=False):
     # Read the image
-    im = imread(image, as_grey=False)
+    im = imread(image, as_grey=True)
     min_wdw_sz = (100, 40)
     step_size = (10, 10)
     downscale = 1.25
@@ -88,6 +88,8 @@ def detect(image, visualize_det=False):
     if visualize_det:
         cv2.imshow("Raw Detections before NMS", im)
         cv2.waitKey()
+    else:
+        imsave('before.png', im)
 
     # Perform Non Maxima Suppression
     detections = nms(detections, threshold)
@@ -99,6 +101,8 @@ def detect(image, visualize_det=False):
     if visualize_det:
         cv2.imshow("Final Detections after applying NMS", clone)
         cv2.waitKey()
+    else:
+        imsave('after.png', clone)
 
 if __name__ == "__main__":
     # Parse the command line arguments
