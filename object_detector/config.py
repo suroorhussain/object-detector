@@ -1,12 +1,13 @@
 '''
 Set the config variable.
 '''
-
 import ConfigParser as cp
 import json
 
+from helpers import get_abspath
+
 config = cp.RawConfigParser()
-config.read('../data/config/config.cfg')
+config.read(get_abspath('../data/config/config.cfg', __file__))
 
 min_wdw_sz = json.loads(config.get("hog","min_wdw_sz"))
 step_size = json.loads(config.get("hog", "step_size"))

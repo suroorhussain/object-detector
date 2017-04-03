@@ -7,6 +7,7 @@ import cv2
 import argparse as ap
 from nms import nms
 from config import *
+from helpers import get_abspath
 
 def sliding_window(image, window_size, step_size):
     '''
@@ -37,7 +38,7 @@ def detect(image, visualize_det=False):
     downscale = 1.25
 
     # Load the classifier
-    clf = joblib.load(model_path)
+    clf = joblib.load(get_abspath(model_path, __file__))
 
     # List to store the detections
     detections = []
@@ -89,7 +90,7 @@ def detect(image, visualize_det=False):
         cv2.imshow("Raw Detections before NMS", im)
         cv2.waitKey()
     else:
-        imsave('before.png', im)
+        imsave(get_abspath('../server/images/before.png', __file__), im)
 
     # Perform Non Maxima Suppression
     detections = nms(detections, threshold)
@@ -102,7 +103,7 @@ def detect(image, visualize_det=False):
         cv2.imshow("Final Detections after applying NMS", clone)
         cv2.waitKey()
     else:
-        imsave('after.png', clone)
+        imsave(get_abspath('../server/images/after.png', __file__), clone)
 
 if __name__ == "__main__":
     # Parse the command line arguments
