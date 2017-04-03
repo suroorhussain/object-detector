@@ -14,13 +14,13 @@ if not os.path.exists(dataset_path):
 # # Extract the features
 # pos_path = "../data/dataset/CarData/pos"
 # neg_path = "../data/dataset/CarData/neg"
-#os.system("python ../object-detector/extract_features.py")
+#os.system("python ../object_detector/extract_features.py")
 
 # Perform training
 # pos_feat_path =  "../data/features/pos"
 # neg_feat_path =  "../data/features/neg"
-os.system("python ../object-detector/train_classifier.py")
+os.system("python ../object_detector/train_classifier.py")
 
 # Perform testing 
 test_im_path = "../data/dataset/CarData/TestImages/test-16.pgm"
-os.system("python ../object-detector/test_classifier.py -i {}".format(test_im_path))
+os.system("python ../object_detector/test_classifier.py -i {}".format(test_im_path))
